@@ -1,0 +1,111 @@
+import React from 'react'
+import styled, { keyframes, ThemeProvider } from 'styled-components'
+import {DarkTheme} from './Themes';
+
+
+import LogoComponent from '../subComponents/LogoComponent';
+import SocialIcons from '../subComponents/SocialIcons';
+import PowerButton from '../subComponents/PowerButton';
+import ParticleComponent from '../subComponents/ParticleComponent';
+import BigTitle from '../subComponents/BigTitlte'
+import astronaut from '../assets/Images/logozol.png'
+
+const Box = styled.div`
+background-color: ${props => props.theme.body};
+width: 100vw;
+height:100vh;
+position: relative;
+overflow: hidden;
+`
+const float = keyframes`
+0% { transform: translateY(-10px) }
+50% { transform: translateY(15px) translateX(15px) }
+100% { transform: translateY(-10px) }
+
+`
+const Spaceman = styled.div`
+position: absolute;
+top: 10%;
+right: 5%;
+width: 20vw;
+animation: ${float} 4s ease infinite;
+img{
+    width: 100%;
+    height: auto;
+}
+`
+const Main =  styled.div`
+  
+  color: ${(props) => props.theme.text};
+  padding: 2rem;
+  width: 50vw;
+  height: 60vh;
+  z-index: 3;
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(0.6rem + 1vw);
+  position: absolute;
+  left: calc(5rem + 5vw);
+  top: 10rem;
+  font-family: 'Ubuntu Mono', monospace;
+  font-style: italic;
+
+  backdrop-filter: blur(6px);
+  opacity: 0.8;
+  border-radius: 1.5rem;
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(225, 225, 225, 0.3) 0%,
+      rgba(225, 225, 225, 0.1) 100%
+  );
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: rgba(255, 255, 255, 0.5) -20px, rgba(0, 0, 0, 0.06) 5px 5px 10px;
+    &::before{
+        background-image: linear-gradient(
+            135deg,
+            rgba(225, 225, 225, 0) 0%,
+            rgba(225, 225, 225, 0.05) 40%,
+            rgba(225, 225, 225, 0) 40%
+        );
+        pointer-events: none;
+    }
+`
+
+
+
+
+const AboutPage = () => {
+    return (
+        <ThemeProvider theme={DarkTheme}>
+<Box>
+
+<LogoComponent theme='dark'/>
+<SocialIcons theme='dark'/>
+<PowerButton />
+<ParticleComponent theme='dark' />
+
+        <Spaceman>
+            <img src={astronaut} alt="spaceman" />
+        </Spaceman>    
+        <Main>
+        I'm a junior programmer developer located in Jakarta. I love to create simple website with beautiful animation and artificial intelligence.
+        <br /> <br/>
+        I'm interested in programmer scope by creating command line and redesign. i'm looking for a job and join th development team.
+        <br/> <br/>
+        I believe that presistence in learning , process and consistency will yield maximum results.
+        </Main>
+
+        <BigTitle text="ABOUT" top="10%" left="5%" />
+
+
+        </Box>
+
+        </ThemeProvider>
+        
+    )
+}
+
+export default AboutPage
